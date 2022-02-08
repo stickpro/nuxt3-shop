@@ -1,0 +1,64 @@
+:root {
+    /* Минимальный размер сетки.
+    Все размеры делаем кратными ему (кроме случаев, где сетка неприменима). */
+    --gs: 8px;
+    --g: calc(var(--gs) * 4);
+    --column: 90px;
+    --grid-columns: 12;
+
+    /* Глобальные цвета проекта. */
+    --cl-black: #000000;
+    --cl-white: #ffffff;
+
+    /* Основные цвета проекта и текста */
+    --cl-global: #141116;
+    --cl-global-invert: #ffffff;
+    --cl-grey: #7d7d7d;
+    --cl-elem-grey: #f8f8f8;
+    --cl-divider-grey: #eff1f3;
+
+    /* Цвета проекта */
+    --cl-red: #eb5757;
+    --cl-gold: #ffd338;
+    --cl-olive: #7d5426;
+    --cl-dark-blue: #254364;
+    --cl-dark-cherry: #3b1c2a;
+    --cl-dirty-green: #d1d8c8;
+    --cl-green: green;
+
+    --cl-status-error: var(--cl-red);
+    --cl-status-warning: var(--cl-gold);
+    --cl-status-success: var(--cl-green);
+
+    /* Время для основных анимаций (изменение цвета, фона и пр.) */
+    --time: 200ms;
+
+    /* Время для анимаций появления, исчезновения */
+    --animation-time: 400ms;
+
+    /* http://cubic-bezier.com/#.3,.76,.36,.93 */
+    --timing-function: cubic-bezier(0.3, 0.76, 0.36, 0.93);
+
+    /* Шрифты */
+    --base-font: 'Futura PT', arial, sans-serif;
+
+    /* Максимальная длина контейнера */
+    --container-max-width: 1440px;
+
+    /* Точки адаптива */
+    --mobile-sm-size-min: 320px;
+    --mobile-size: 479px;
+    --mobile-size-min: 480px;
+    --mobile-lg-size: 639px;
+    --mobile-lg-size-min: 640px;
+    --tablet-size: 767px;
+    --tablet-size-min: 768px;
+    --tablet-lg-size: 1023px;
+    --tablet-lg-size-min: 1024px;
+    --desktop-size: 1279px;
+    --desktop-size-min: 1280px;
+    --desktop-lg-size: 1599px;
+    --desktop-lg-size-min: 1600px;
+    --desktop-xl-size: 1909px;
+    --desktop-xl-size-min: 1910px;
+}
