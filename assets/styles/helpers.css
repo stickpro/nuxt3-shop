@@ -1,0 +1,96 @@
+.text-sm {
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.text-normal {
+    font-weight: normal;
+}
+
+.text-medium {
+    font-weight: 500;
+}
+
+.text-bold {
+    font-weight: bold;
+}
+
+.text-grey {
+    color: var(--cl-grey);
+}
+
+.text-strike {
+    text-decoration: line-through;
+}
+
+.text-uppercase {
+    text-transform: uppercase;
+}
+
+.text-lowercase {
+    text-transform: lowercase;
+}
+
+.visibility-hidden {
+    visibility: hidden;
+}
+
+.status {
+    &-color {
+        &-success {
+            color: var(--cl-status-success);
+        }
+
+        &-error {
+            color: var(--cl-status-error);
+        }
+
+        &-warning {
+            color: var(--cl-status-warning);
+        }
+    }
+
+    &-bg {
+        &-success {
+            color: var(--cl-status-success);
+        }
+
+        &-error {
+            color: var(--cl-status-error);
+        }
+
+        &-warning {
+            color: var(--cl-status-warning);
+        }
+    }
+}
+
+.clipboard-input {
+    position: fixed;
+    height: 0;
+    width: 0;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+.hook {
+    position: absolute;
+    top: calc(var(--gs) * -14);
+    left: 0;
+    z-index: 1;
+    height: 0;
+    width: 0;
+
+    @media (--tablet-lg) {
+        top: calc(var(--gs) * -8);
+    }
+
+    @media (--tablet) {
+        top: calc(var(--gs) * -6);
+    }
+}
+
+.network {
+    display: flex;
+}
