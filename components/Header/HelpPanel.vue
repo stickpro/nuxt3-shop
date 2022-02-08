@@ -23,16 +23,92 @@
                 />
             </div>
         </template>
+        <template v-slot:body>
+            <div class="text-grey help-panel__info">
+                Всегда отвечаем на ваши сообщения
+            </div>
+            <div class="help-panel__socials">
+                <a
+                    v-for="link in links"
+                    :key="link.socialName"
+                    :href="link.href"
+                    @mouseover="link.hover = true"
+                    @mouseleave="link.hover = false"
+                    class="help-panel__socials-icon"
+                    target="_blank"
+                    rel="nofollow"
+                >
+                    <v-svg
+                        :name="!link.hover ? link.icon : `${link.icon}-hover`"
+                        width="40"
+                        height="40"
+                    />
+                </a>
+            </div>
+        </template>
+        <template v-slot:bottom>
+            <div class="help-panel__links">
+                <nuxt-link class="link help-panel__link" to="/">
+                    Доставка и оплата
+                </nuxt-link>
+                <nuxt-link class="link help-panel__link" to="/">
+                    Возврат товара
+                </nuxt-link>
+            </div>
+        </template>
     </general-popup-panel>
 </template>
 <script setup lang="ts">
 import { reactive } from "vue";
-const isOpen = reactive({ value: false });
 
+const isOpen = reactive({ value: false });
+const links = reactive([
+    {
+        socialName: "telegram",
+        href: "",
+        icon: "socials-telegram",
+        hover: false,
+    },
+    {
+        socialName: "whatsup",
+        href: "",
+        icon: "socials-whatsup",
+        hover: false,
+    },
+    { socialName: "viber", href: "", icon: "socials-viber", hover: false },
+    { socialName: "vk", href: "", icon: "socials-vk", hover: false },
+    {
+        socialName: "facebook",
+        href: "",
+        icon: "socials-fb",
+        hover: false,
+    },
+]);
+//actions
 const onClick = () => (isOpen.value = !isOpen.value);
 const onHide = () => (isOpen.value = false);
 </script>
 <style lang="postcss">
+.link {
+    font-size: 16px;
+    line-height: 24px;
+    text-decoration: none;
+    transition: all var(--time) var(--timing-function);
+    border-bottom: none;
+    text-transform: uppercase;
+
+    &--sm {
+        font-weight: normal;
+        font-size: 12px;
+        line-height: 20px;
+    }
+
+    &--grey {
+        fill: var(--cl-grey);
+        color: var(--cl-grey);
+    }
+}
+
 .help-panel {
     min-width: 336px;
 
@@ -71,6 +147,7 @@ const onHide = () => (isOpen.value = false);
         &-icon {
             margin-left: calc(var(--gs) * 3);
             cursor: pointer;
+            border-bottom: none;
 
             &:first-of-type {
                 margin-left: 0;
