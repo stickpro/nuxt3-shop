@@ -20,7 +20,7 @@ export default defineNuxtConfig({
             }),
         ],
     },
-    buildModules: ["@intlify/nuxt3"],
+    buildModules: ["@intlify/nuxt3", "@pinia/nuxt"],
 
     intlify: {
         localeDir: "locales", // set the `locales` directory at source directory of your Nuxt application
