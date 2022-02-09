@@ -4,28 +4,32 @@ import viteSvgIcons from "vite-plugin-svg-icons";
 
 // https://v3.nuxtjs.org/docs/directory-structure/nuxt.config
 export default defineNuxtConfig({
-    build: {
-        postcss: {
-            postcssOptions: require("./postcss.config.js"),
-        },
-    },
-    vite: {
-        plugins: [
-            viteSvgIcons({
-                // Specify the icon folder to be cached
+  publicRuntimeConfig: {
+    GEO_API: process.env.GEO_API,
+  },
 
-                iconDirs: [resolve(__dirname, "./assets/images/sprites")],
-                // Specify symbolId format
-                symbolId: "icon-[dir]-[name]",
-            }),
-        ],
+  build: {
+    postcss: {
+      postcssOptions: require("./postcss.config.js"),
     },
-    buildModules: ["@intlify/nuxt3", "@pinia/nuxt"],
+  },
+  vite: {
+    plugins: [
+      viteSvgIcons({
+        // Specify the icon folder to be cached
 
-    intlify: {
-        localeDir: "locales", // set the `locales` directory at source directory of your Nuxt application
-        vueI18n: {
-            locale: "ru",
-        },
+        iconDirs: [resolve(__dirname, "./assets/images/sprites")],
+        // Specify symbolId format
+        symbolId: "icon-[dir]-[name]",
+      }),
+    ],
+  },
+  buildModules: ["@intlify/nuxt3", "@pinia/nuxt"],
+
+  intlify: {
+    localeDir: "locales", // set the `locales` directory at source directory of your Nuxt application
+    vueI18n: {
+      locale: "ru",
     },
+  },
 });

@@ -33,6 +33,12 @@
         </div>
     </div>
 </template>
+<script setup lang="ts">
+import { useGeoStore } from '@/store/geo'
+
+const geo = useGeoStore()
+geo.loadGeoData()
+</script>
 <style lang="postcss">
 .header-top {
     padding: calc(var(--gs) / 2) 0;
