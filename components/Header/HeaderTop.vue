@@ -34,10 +34,14 @@
     </div>
 </template>
 <script setup lang="ts">
-import { useGeoStore } from '@/store/geo'
+import { useGeoStore } from "@/store/geo";
+import { useNuxtApp } from "#app";
 
-const geo = useGeoStore()
-geo.loadGeoData()
+const ctx = useRuntimeConfig();
+console.log(ctx);
+
+const geo = useGeoStore();
+geo.loadGeoData();
 </script>
 <style lang="postcss">
 .header-top {
