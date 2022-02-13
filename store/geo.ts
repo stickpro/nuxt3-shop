@@ -1,15 +1,31 @@
 import { defineStore } from "pinia";
 
-interface GeoState {}
-
+interface GeoLocationState {
+    ip: string;
+    city: string;
+    country: string;
+    countryCode: string;
+    regionName: string;
+    regionCode: string;
+    timezone: string;
+    zip: string;
+}
 export const useGeoStore = defineStore({
     id: "geo",
-    state: (): GeoState => ({}),
+    state: (): GeoLocationState => ({
+        ip: "",
+        city: "",
+        country: "",
+        countryCode: "",
+        regionName: "",
+        regionCode: "",
+        timezone: "",
+        zip: "",
+    }),
     actions: {
-        async loadGeoData(ip) {
-            const data = await this.$nuxt.$api.geo.getGeolocation(ip);
-
-            console.log(this.$nuxt);
+        async loadGeoData() {
+            const data = await this.$api.geo.getGeolocation();
+            console.log(data);
         },
     },
 });

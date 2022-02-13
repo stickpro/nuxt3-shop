@@ -35,10 +35,6 @@
 </template>
 <script setup lang="ts">
 import { useGeoStore } from "@/store/geo";
-import { useNuxtApp } from "#app";
-
-const ctx = useRuntimeConfig();
-console.log(ctx);
 
 const geo = useGeoStore();
 geo.loadGeoData();
