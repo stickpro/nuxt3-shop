@@ -2,7 +2,7 @@
     <div class="header-top">
         <div class="container header-top__container">
             <button class="header-top__city" title="Выбрать город">
-                <v-svg name="pin" width="16" height="16" />
+                <v-svg name="pin" width="16" height="16" /> {{ geo.city }}
             </button>
             <div class="header-top__middle">
                 <a class="header-top__middle-item">
@@ -35,7 +35,7 @@
 </template>
 <script setup lang="ts">
 import { useGeoStore } from "@/store/geo";
-
+import { mapState } from "pinia";
 const geo = useGeoStore();
 geo.loadGeoData();
 </script>

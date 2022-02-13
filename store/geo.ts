@@ -25,7 +25,8 @@ export const useGeoStore = defineStore({
     actions: {
         async loadGeoData() {
             const data = await this.$api.geo.getGeolocation();
-            console.log(data);
+            data.ip = data.query;
+            this.$state = { ...data };
         },
     },
 });
