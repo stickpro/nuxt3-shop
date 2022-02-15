@@ -1,0 +1,184 @@
+<template>
+    <a class="btn" v-if="href" :href="href">
+        <v-svg
+            v-if="iconName && placement === 'before'"
+            :name="iconName"
+            :modifier="iconModifier"
+        />
+        <slot />
+        <v-svg
+            v-if="iconName && placement === 'after'"
+            :name="iconName"
+            :modifier="iconModifier"
+        />
+    </a>
+    <nuxt-link class="btn" v-else-if="to" :to="to">
+        <v-svg
+            v-if="iconName && placement === 'before'"
+            :name="iconName"
+            :modifier="iconModifier"
+        />
+        <slot />
+        <v-svg
+            v-if="iconName && placement === 'after'"
+            :name="iconName"
+            :modifier="iconModifier"
+        />
+    </nuxt-link>
+    <button class="btn" v-else :type="type">
+        <v-svg
+            v-if="iconName && placement === 'before'"
+            :name="iconName"
+            :modifier="iconModifier"
+        />
+        <slot />
+        <v-svg
+            v-if="iconName && placement === 'after'"
+            :name="iconName"
+            :modifier="iconModifier"
+        />
+    </button>
+</template>
+<script setup lang="ts">
+const props = defineProps({
+    iconName: String,
+    iconModifier: String,
+    type: {
+        type: String,
+        default: "button",
+    },
+    placement: {
+        type: String,
+        default: "before",
+    },
+    href: {
+        type: String,
+    },
+    to: {
+        type: [String, Object],
+    },
+});
+</script>
+<style scoped lang="postcss">
+.btn {
+    display: inline-block;
+    position: relative;
+    font-size: 14px;
+    line-height: 24px;
+    padding: 6px calc(var(--gs) * 2);
+    clear: both;
+    transition: all var(--time) var(--timing-function);
+    border: 2px solid var(--cl-global);
+    background: var(--cl-global);
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: var(--cl-white);
+    fill: var(--cl-white);
+
+    &:hover {
+        background-color: var(--cl-white);
+        fill: var(--cl-global);
+        color: var(--cl-global);
+    }
+
+    &--big {
+        height: calc(var(--gs) * 6);
+    }
+
+    &.is-disabled,
+    &:disabled {
+        background-color: var(--cl-grey);
+        border-color: var(--cl-grey);
+        color: var(--cl-white);
+        fill: var(--cl-white);
+        pointer-events: none;
+    }
+
+    .icon--right {
+        margin: -3px 0 0 6px;
+    }
+
+    .icon--left {
+        margin: -3px 6px 0 0;
+    }
+
+    &--transparent {
+        border-color: transparent;
+        background-color: transparent;
+        color: var(--cl-global);
+        fill: var(--cl-global);
+
+        &:hover {
+            border-color: transparent;
+            background-color: transparent;
+            color: var(--cl-dk-blue);
+            fill: var(--cl-dk-blue);
+        }
+
+        &.is-disabled,
+        &:disabled {
+            background-color: transparent;
+            border-color: transparent;
+            color: var(--cl-divider-grey);
+            fill: var(--cl-divider-grey);
+        }
+    }
+
+    &--outline {
+        border-color: var(--cl-global);
+        background-color: transparent;
+        color: var(--cl-global);
+        fill: var(--cl-global);
+
+        &:hover {
+            background-color: var(--cl-global);
+            color: var(--cl-white);
+            fill: var(--cl-white);
+        }
+
+        &.is-disabled,
+        &:disabled {
+            background-color: transparent;
+            border-color: var(--cl-grey);
+            color: var(--cl-grey);
+            fill: var(--cl-grey);
+        }
+    }
+
+    &--white {
+        border-color: var(--cl-white);
+        background-color: var(--cl-white);
+        color: var(--cl-global);
+        fill: var(--cl-global);
+
+        &:hover {
+            background-color: var(--cl-global);
+            border-color: var(--cl-global);
+            color: var(--cl-white);
+            fill: var(--cl-white);
+        }
+
+        &.btn--outline {
+            background-color: transparent;
+            color: var(--cl-white);
+            fill: var(--cl-white);
+
+            &:hover {
+                border-color: var(--cl-white);
+                background-color: var(--cl-white);
+                color: var(--cl-global);
+                fill: var(--cl-global);
+            }
+        }
+
+        &.is-disabled,
+        &:disabled {
+            background-color: transparent;
+            border-color: var(--cl-divider-grey);
+            color: var(--cl-divider-grey);
+            fill: var(--cl-divider-grey);
+        }
+    }
+}
+</style>
