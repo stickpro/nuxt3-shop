@@ -9,6 +9,7 @@ interface GeoLocationState {
     regionCode: string;
     timezone: string;
     zip: string;
+    isCityConfirmationOpen: boolean;
 }
 export const useGeoStore = defineStore({
     id: "geo",
@@ -21,12 +22,19 @@ export const useGeoStore = defineStore({
         regionCode: "",
         timezone: "",
         zip: "",
+        isCityConfirmationOpen: false,
     }),
     actions: {
         async loadGeoData() {
             const data = await this.$api.geo.getGeolocation();
-            data.ip = data.query;
-            this.$state = { ...data };
+            this.ip = data.query;
+            this.city = data.city;
+            this.country = data.country;
+            this.countryCode = data.countryCode;
+            this.regionName = data.regionName;
+            this.regionCode = data.regionCode;
+            this.timezone = data.timezone;
+            this.zip = data.zip;
         },
     },
 });
