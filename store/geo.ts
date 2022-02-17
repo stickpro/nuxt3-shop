@@ -22,7 +22,7 @@ export const useGeoStore = defineStore({
         regionCode: "",
         timezone: "",
         zip: "",
-        isCityConfirmationOpen: false,
+        isCityConfirmationOpen: true,
     }),
     actions: {
         async loadGeoData() {

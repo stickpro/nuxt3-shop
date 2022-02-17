@@ -3,7 +3,7 @@
         popover-class="v-popper--white city-confirmation-panel"
         placement="top-start"
         :header="header"
-        :open="!isCityConfirmationOpen"
+        :open="isCityConfirmationOpen"
         showCloseBtn
         @close="onClose"
         @hide="onClose"
@@ -24,8 +24,15 @@ import { useGeoStore } from "@/store/geo";
 const geo = useGeoStore();
 
 const header = computed(() => `Ваш город ${geo.city}?`);
-const isCityConfirmationOpen = geo.isCityConfirmationOpen;
-const onClose = () => {};
+const isCityConfirmationOpen = ref(true);
+const onClose = () => {
+    geo.isCityConfirmationOpen = false;
+};
+onMounted(() => {
+    setTimeout(() => {
+        isCityConfirmationOpen.value = geo.isCityConfirmationOpen;
+    }, 2000);
+});
 </script>
 <style lang="postcss">
 .city-confirmation-panel {
