@@ -13,9 +13,9 @@
     background: var(--cl-cyan);
 } */
 
-:focus {
+/* :focus {
     outline: 1px solid var(--cl-gold);
-}
+} */
 
 .js-focus-visible :focus:not(.focus-visible) {
     outline: none;
@@ -231,7 +231,7 @@ fieldset {
     }
 }
 
-input[type='number'] {
+input[type="number"] {
     padding: 0 calc(var(--gs) * 2);
     border: 1px solid var(--cl-global);
     line-height: calc(var(--gs) * 4);

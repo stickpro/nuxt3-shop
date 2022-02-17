@@ -61,6 +61,10 @@ const props = defineProps({
         type: Boolean,
         default: false,
     },
+    tag: {
+        type: String,
+        default: "a",
+    },
 });
 </script>
 <style lang="postcss">
