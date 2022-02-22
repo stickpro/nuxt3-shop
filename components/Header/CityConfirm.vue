@@ -13,7 +13,11 @@
             <v-button class="city-confirmation-panel__controls-btn"
                 >Да, все верно</v-button
             >
-            <v-link tag="button" class="city-confirmation-panel__controls-btn">
+            <v-link
+                tag="button"
+                @click="changeModal({ state: true })"
+                class="city-confirmation-panel__controls-btn"
+            >
                 Нет, выбрать другой
             </v-link>
         </template>
@@ -21,6 +25,9 @@
 </template>
 <script setup lang="ts">
 import { useGeoStore } from "@/store/geo";
+import { useModalStore } from "@/store/modal";
+import { mapActions } from "pinia";
+
 const geo = useGeoStore();
 
 const header = computed(() => `Ваш город ${geo.city}?`);
@@ -28,6 +35,8 @@ const isCityConfirmationOpen = ref(true);
 const onClose = () => {
     geo.isCityConfirmationOpen = false;
 };
+const { changeModal } = mapActions(useModalStore, ["changeModal"]);
+
 onMounted(() => {
     setTimeout(() => {
         isCityConfirmationOpen.value = geo.isCityConfirmationOpen;
