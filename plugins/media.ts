@@ -4,6 +4,7 @@ import { Vue3Mq, useMq } from "vue3-mq";
 export default defineNuxtPlugin((nuxtApp) => {
     nuxtApp.vueApp.use(Vue3Mq, {
         breakpoints: {
+            phone: 0,
             mobileSm: 320,
             mobile: 480,
             mobileLg: 640,

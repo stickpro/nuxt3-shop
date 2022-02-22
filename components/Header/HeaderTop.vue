@@ -35,9 +35,12 @@
 </template>
 <script setup lang="ts">
 import { useGeoStore } from "@/store/geo";
-import { mapState } from "pinia";
 const geo = useGeoStore();
+
+onMounted(() => {
+
 geo.loadGeoData();
+})
 </script>
 <style lang="postcss">
 .header-top {

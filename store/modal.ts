@@ -2,5 +2,13 @@ import { defineStore } from "pinia";
 
 export const useModalStore = defineStore({
     id: "Modal",
-    state(): {};,
+    state: () => {
+        return {
+            general: {
+                CITY_SELECTION: {
+                    open: false,
+                }
+            }
+        }
+    },
 });
