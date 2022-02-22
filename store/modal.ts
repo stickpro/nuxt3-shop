@@ -18,7 +18,7 @@ export const useModalStore = defineStore({
     },
     actions: {
         changeModal(payload) {
-            this.general.CITY_SELECTION.open = payload.state;
+            this[payload.category][payload.name].open = payload.state;
         },
     },
 });

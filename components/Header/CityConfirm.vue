@@ -15,7 +15,7 @@
             >
             <v-link
                 tag="button"
-                @click="changeModal({ state: true })"
+                @click="openModalCity"
                 class="city-confirmation-panel__controls-btn"
             >
                 Нет, выбрать другой
@@ -29,13 +29,19 @@ import { useModalStore } from "@/store/modal";
 import { mapActions } from "pinia";
 
 const geo = useGeoStore();
+const modal = useModalStore();
 
 const header = computed(() => `Ваш город ${geo.city}?`);
 const isCityConfirmationOpen = ref(true);
+
 const onClose = () => {
     geo.isCityConfirmationOpen = false;
 };
-const { changeModal } = mapActions(useModalStore, ["changeModal"]);
+
+const { changeModal } = modal;
+const openModalCity = function () {
+    changeModal({ category: "general", name: "CITY_SELECTION", state: true });
+};
 
 onMounted(() => {
     setTimeout(() => {
