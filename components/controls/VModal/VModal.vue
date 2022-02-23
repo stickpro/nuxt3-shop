@@ -1,10 +1,5 @@
 <template>
-    <div
-        class="modal-mask"
-        @click="onClose"
-        @touchstart.self.prevent="onClose"
-        @touchmove.self.prevent
-    >
+    <div class="modal-mask">
         <div
             v-scroll-lock="lock"
             ref="wrapper"
@@ -77,14 +72,15 @@ const props = defineProps({
         default: "",
     },
 });
-const emit = defineEmits(["closeOnBtn", "close"]);
+const emit = defineEmits(["close"]);
 const lock = ref(false);
 const clickInside = ref(false);
 const wrapper = ref(null);
 const popup = ref();
-const onClose = () => {
-    onClickOutside(popup, () => emit("close"));
-};
+
+onClickOutside(popup, () => {
+    emit("close");
+});
 
 const onPopupMouseDown = () => {
     clickInside.value = true;
@@ -95,7 +91,7 @@ const onPopupMouseUp = () => {
 const keyDown = (e) => {
     switch (e.key) {
         case "Escape":
-            if (props.closeOnBtn) emit("closeOnBtn");
+            if (props.closeOnBtn) emit("close");
             e.preventDefault();
             break;
     }
