@@ -1,7 +1,11 @@
 <template>
     <div class="header-top">
         <div class="container header-top__container">
-            <button class="header-top__city" title="Выбрать город">
+            <button
+                class="header-top__city"
+                title="Выбрать город"
+                @click="onOpenCitySelection"
+            >
                 <v-svg name="pin" width="16" height="16" /> {{ geo.city }}
             </button>
             <div class="header-top__middle">
@@ -37,10 +41,11 @@
 import { useGeoStore } from "@/store/geo";
 const geo = useGeoStore();
 
-onMounted(() => {
+const { onOpenCitySelection } = useModal();
 
-geo.loadGeoData();
-})
+onMounted(() => {
+    geo.loadGeoData();
+});
 </script>
 <style lang="postcss">
 .header-top {
