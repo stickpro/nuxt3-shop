@@ -6,11 +6,32 @@
         @close="emit('close', $event)"
         :closeBtnClass="closeBtnClass"
     >
-        <template v-slot:body> test </template>
+        <template v-slot:body>
+            <v-sticky v-if="isPhone" class="general-modal__sticky">
+                <template v-slot:sticky>
+                    <div class="container general-modal__header">
+                        <slot name="header">
+                            <v-button
+                                iconName="cross"
+                                class="general-modal__header-btn"
+                                @click.prevent="emit('close', $event)"
+                            >
+                                {{ header }}
+                            </v-button>
+                        </slot>
+                        <slot name="content" />
+                    </div>
+                    <slot name="after" />
+                </template>
+            </v-sticky>
+            <slot v-else name="content" />
+        </template>
     </controls-v-modal>
 </template>
 <script setup lang="ts">
 const mounted = ref(false);
+
+const { isPhone } = useMq();
 const props = defineProps({
     header: {
         type: String,
@@ -28,7 +49,6 @@ const props = defineProps({
 });
 
 const emit = defineEmits(["close"]);
-
 
 onMounted(() => {
     mounted.value = true;

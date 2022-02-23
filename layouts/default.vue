@@ -4,11 +4,12 @@
         <main>
             <NuxtPage />
         </main>
-        <transition name="fade-in">
-            <div>
-                <modal-city-selection v-if="isCitySelectionOpen" />
-            </div>
-        </transition>
+
+        <Transition name="fade-in">
+            <modal-city-selection
+                v-if="isCitySelectionOpen"
+            ></modal-city-selection>
+        </Transition>
     </div>
 </template>
 <script setup lang="ts">
