@@ -15,7 +15,7 @@
             >
             <v-link
                 tag="button"
-                @click="openModalCity"
+                @click="onOpenCitySelection"
                 class="city-confirmation-panel__controls-btn"
             >
                 Нет, выбрать другой
@@ -25,22 +25,15 @@
 </template>
 <script setup lang="ts">
 import { useGeoStore } from "@/store/geo";
-import { useModalStore } from "@/store/modal";
-import { mapActions } from "pinia";
 
 const geo = useGeoStore();
-const modal = useModalStore();
+const { onOpenCitySelection } = useModal();
 
 const header = computed(() => `Ваш город ${geo.city}?`);
 const isCityConfirmationOpen = ref(true);
 
 const onClose = () => {
     geo.isCityConfirmationOpen = false;
-};
-
-const { changeModal } = modal;
-const openModalCity = function () {
-    changeModal({ category: "general", name: "CITY_SELECTION", state: true });
 };
 
 onMounted(() => {
