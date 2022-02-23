@@ -1,0 +1,99 @@
+.v-input {
+    position: relative;
+
+    &--float {
+        padding-top: calc(var(--gs) * 2);
+    }
+
+    &--float &__input {
+        border: none;
+        border: 1px solid var(--cl-grey);
+    }
+
+    &--float &__label {
+        color: var(--cl-grey);
+        position: absolute;
+        top: 16px;
+        left: 16px;
+        line-height: 2.5rem;
+        transition: all var(--time) ease;
+    }
+
+    &--float.&--active &__label {
+        top: 0;
+        color: var(--cl-global);
+        font-size: 12px;
+        line-height: 16px;
+    }
+
+    &--float &__error {
+        padding: 0 16px;
+        border: none;
+        border-bottom: 1px solid var(--cl-grey);
+    }
+
+    &--active &__input {
+        border-bottom-color: var(--cl-global);
+    }
+
+    &--invalid &__input {
+        border-color: var(--cl-red) !important;
+        color: var(--cl-red) !important;
+    }
+
+    &--float.&--disabled &__input {
+        color: var(--cl-grey);
+        border-bottom-color: var(--cl-grey);
+    }
+
+    &--disabled &__input {
+        border-color: var(--cl-grey) !important;
+        color: var(--cl-grey) !important;
+    }
+
+    &--disabled &__label {
+        color: var(--cl-grey);
+    }
+
+    &__label {
+        display: flex;
+        margin-bottom: var(--gs);
+        cursor: text;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 24px;
+
+        &:empty {
+            display: none;
+        }
+    }
+
+    &__input {
+        width: 100%;
+        min-height: calc(var(--gs) * 5);
+        padding: 6px calc(var(--gs) * 2);
+        border: 1px solid var(--cl-global);
+        color: var(--cl-global);
+        background-color: var(--cl-white);
+        transition: all var(--time) var(--timing-function);
+        overflow: hidden;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    &__container {
+        position: relative;
+        display: flex;
+    }
+
+    &__error {
+        position: relative;
+        min-height: calc(var(--gs) * 3);
+        font-size: 12px;
+        line-height: calc(var(--gs) * 3);
+        color: var(--cl-red);
+        overflow: hidden;
+    }
+}
