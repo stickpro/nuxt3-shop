@@ -5,6 +5,7 @@
                 <HeaderCityConfirm />
             </div>
             <HeaderTop />
+            <HeaderBottom />
         </div>
     </header>
 </template>
